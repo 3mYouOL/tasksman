@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public function store(Request $request)
     {
-        $validatedData = $request->validate(['title' => 'required']);
+        $validData = $request->validate(['title'=>'required']);
 
         $task = Task::create([
-            'title' => $validatedData['title'],
+            'title' => $validData['title'],
             'project_id' => $request->project_id,
         ]);
 
